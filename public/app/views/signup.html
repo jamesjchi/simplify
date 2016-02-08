@@ -1,0 +1,99 @@
+
+  <md-content flex layout-align="center" class="signupBg">
+    <md-card layout="row" layout-align="center" class="animated fadeInDownBig md-whiteframe-z2 signupForm">
+      <form ng-submit="userSignup()" name="userForm">
+          <h1 class="header">Create an Account</h1>
+        <div layout-gt-sm="row">
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Name</label>
+            <input md-maxlength="30" required="" name="name" ng-model="user.name">
+
+            <div ng-messages="userForm.name.$error" ng-if="!showHints">
+              <div ng-message="required">Name is required.</div>
+              <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+            </div>
+          </md-input-container>
+
+          <div flex="5" hide-xs="" hide-sm="">
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Password</label>
+            <input type="password" md-maxlength="100" minlength="5" required="" name="password" ng-model="user.password">
+
+            <div ng-messages="userForm.password.$error" ng-hide="showHints">
+              <div ng-message="required">Password is required.</div>
+              <div ng-message="md-maxlength">The password has to be at least 5 characters and less than 100.</div>
+            </div>
+           
+          </md-input-container>
+
+        </div>
+
+        <div layout-gt-sm="row">
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Email</label>
+            <input name="email" ng-model="user.email" required="" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+
+            <div ng-messages="userForm.email.$error" ng-if="!showHints">
+              <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                Your email must be between 10 and 100 characters long and look like an e-mail address.
+              </div>
+            </div>
+          </md-input-container>
+
+          <div flex="5" hide-xs="" hide-sm="">
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Phone Number</label>
+            <input name="phone" ng-model="user.phone" ng-pattern="/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/">
+
+            <div ng-messages="userForm.phone.$error" ng-hide="showHints">
+              <div ng-message="pattern">(###) ###-#### - Please enter a valid phone number.</div>
+            </div>
+            
+          </md-input-container>
+
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Location</label>
+            <input name="location" ng-model="user.location" required="" minlength="10" maxlength="100">
+
+            <div ng-messages="userForm.location.$error" ng-if="!showHints">
+              <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                Input your current location. (ie. Seattle, WA)
+              </div>
+            </div>
+          </md-input-container>
+
+          <div flex="5" hide-xs="" hide-sm="">
+          <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Notifications</label>
+            <md-select name="notifications" ng-model="user.notifications" required="">
+              <md-option value="true">Yes</md-option>
+              <md-option value="false">No</md-option>
+            </md-select>
+
+            <div ng-messages="userForm.notifications.$error" ng-if="!showHints">
+              <div ng-message-exp="['required']">
+                Select Yes or No if you'd like to receive daily notifications.
+              </div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout="row" layout-align="center">
+          <md-button type="submit" class="md-raised md-accent">Submit</md-button>
+        </div>
+      </form>
+    </md-card>
+  </md-content>
+

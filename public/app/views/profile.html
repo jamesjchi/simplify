@@ -1,0 +1,94 @@
+<div ng-controller="WeatherCtrl" layout="column">
+  <div flex layout="row">
+    <md-sidenav md-is-locked-open="true" class="animated fadeInLeftBig md-whiteframe-z2 sideNav">
+      <md-card class="cardNav">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{user._doc.name}}</span>
+            <span class="md-subhead"></span>
+          </md-card-title-text>
+        </md-card-title>
+          <md-card-content layout="row" layout-align="space-between">
+            <md-card-title-media>
+              <div class="card-media"></div>
+            </md-card-title-media>
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="center" class="profileNavBtn">
+            <md-button ng-href="/profile/{{user._doc._id}}" class="md-raised md-accent">Edit Profile</md-button>
+            <md-button ng-href='' ng-click="showAlert($event)" class="md-raised md-accent">Edit AddOns</md-button>
+          </md-card-actions>
+      </md-card>
+      <md-card class="cardNav">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Notifications</span>
+            <span class="md-subhead">Use this slider to update if you want your daily notifications activated.</span>
+          </md-card-title-text>
+        </md-card-title>
+          <md-switch ng-model="user.notifications" aria-label="Email">
+            Email
+          </md-switch>
+          <md-switch ng-disabled="true" aria-label="Checkbox 1">
+            <md-tooltip md-direction="right">
+              Option Not Available Yet!
+            </md-tooltip>
+            Text
+          </md-switch>
+      </md-card>
+    </md-sidenav>
+    <md-content flex id="content">
+      <!-- <h2 class="header">YOUR PROFILE</h2> -->
+      <div layout="row">
+      <md-card flex="50" class="animated fadeInUpBig quickSearch">
+        <md-card-title class="cardTitle">   
+          <md-card-title-text>
+            <span class="md-headline">Quick Suggest</span>
+            <span class="md-subhead">Enter in a new location for a quick summary of your weather and clothing suggestions</span>
+          </md-card-title-text>
+        </md-card-title>
+        <form ng-submit="getTemperature()" class="profileForm">
+          <md-input-container>
+            <input type="text" class="form-control" ng-model="location"  placeholder="Ex. Seattle, WA">
+          
+            <md-button type="submit" class="md-raised md-accent">Search</md-button>
+          </md-input-container>
+        </form>
+      </md-card>
+      <md-card flex="50" class="animated fadeInUpBig quickSearch"> 
+        <md-card-title class="cardTitle"> 
+          <md-card-title-text>
+            <span class="md-headline">What to Wear</span>
+            <span class="md-subhead">A list of suggested clothes for the day will list below after you submit your location</span>
+          </md-card-title-text>
+        </md-card-title>  
+      </md-card>
+      </div>
+      <div layout="row">
+        <md-card class="cardResult" flex="50">
+          <div ng-show="wTemp" class="animated fadeInUp">
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">Your Current Weather</span>
+                <span class="md-subhead">
+                Currently in {{wPlace}}<br>It is {{wTemp}}&deg;F <br> Conditions: {{wDescription}}
+                </span>
+              </md-card-title-text>
+            </md-card-title>         
+          </div>
+        </md-card>
+        <md-card class="animated fadeIn cardResult" flex="50">
+          <div ng-show="wTemp" class="animated fadeInUp">
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">Your Suggested Clothing</span>
+                <md-list-item ng-repeat='item in clothesArray'>
+                <span class="md-subhead">{{item}}</span>
+                </md-list-item> 
+              </md-card-title-text>
+            </md-card-title>
+          </div>
+        </md-card>
+      </div>       
+    </md-content>
+  </div>
+</div>

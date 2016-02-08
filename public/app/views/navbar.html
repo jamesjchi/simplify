@@ -1,0 +1,15 @@
+<div ng-controller="NavCtrl">
+  <md-toolbar layout="row" layout-padding class="md-whiteframe-z3" layout-align="space-between center">
+    <div>
+      <md-button href="/">Simplify<span class="subheader"> BETA</span></md-button>
+      <md-button href="/about">About</md-button>
+    </div>
+    <div layout-align="end">
+      <md-button href="/login" class="md-raised md-accent" ng-hide="isLoggedIn()">Log In</md-button>
+      <md-button href="/signup" class="md-raised md-accent" ng-hide="isLoggedIn()">Sign Up</md-button>
+      <md-button href="/profile" class="md-raised md-accent" ng-show="isLoggedIn()">Profile</md-button>
+      <md-button href="" class="md-raised md-accent" ng-show="isLoggedIn()" ng-click="logout()">Log Out</md-button>    
+    </div>
+  </md-toolbar>
+  
+</div>

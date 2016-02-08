@@ -1,0 +1,58 @@
+<div ng-controller="ShowCtrl" layout="column">
+  <md-content flex layout-align="center" class="editProfileBg">
+    <md-card layout="row" layout-align="center" class="animated fadeInDownBig md-whiteframe-z2 editForm">
+      <form ng-submit="updateProfile()" name="userForm">
+        <h1 class="header">Edit Your Profile</h1>
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Name</label>
+          <input md-maxlength="30" required="" name="name" ng-model="user._doc.name">
+          <div ng-messages="userForm.name.$error" ng-if="!showHints">
+            <div ng-message="required">Name is required.</div>
+            <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Email</label>
+          <input name="email" ng-model="user._doc.email" required="" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+          <div ng-messages="userForm.email.$error" ng-if="!showHints">
+            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+              Your email must be between 10 and 100 characters long and look like an e-mail address.
+            </div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Phone Number</label>
+          <input name="phone" ng-model="user._doc.phone" ng-pattern="/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/" ng-model="user._doc.phone">
+          <div ng-messages="userForm.phone.$error" ng-hide="showHints">
+            <div ng-message="pattern">(###) ###-#### - Please enter a valid phone number.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Location</label>
+          <input name="location" ng-model="user._doc.location" required="" minlength="10" maxlength="100" ng-model="user._doc.location">
+          <div ng-messages="userForm.location.$error" ng-if="!showHints">
+            <div ng-message-exp="['required', 'minlength', 'maxlength']">
+              Input your current location. (ie. Seattle, WA)
+            </div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Notification Preference</label>
+          <md-select name="notifications" ng-model="user._doc.notifications" required="">
+            <md-option value="true">Yes</md-option>
+            <md-option value="false">No</md-option>
+          </md-select>
+          <div ng-messages="userForm.notifications.$error" ng-if="!showHints">
+            <div ng-message-exp="['required']">
+              Select Yes or No if you'd like to receive daily notifications.
+            </div>
+          </div>
+        </md-input-container>
+        <div layout="row" layout-align="center">
+          <md-button class="md-raised md-accent" type="submit">Update</md-button>
+          <md-button href="/profile" class="md-raised md-accent">Cancel</md-button>
+        </div>
+      </form>
+    </md-card>
+  </md-content>
+</div>

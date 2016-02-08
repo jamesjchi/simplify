@@ -1,0 +1,102 @@
+.header {
+  text-align: center;
+}
+.subheader {
+  font-size: 10px;
+}
+.headerHome {
+  text-align: center;
+  color: white;
+  margin-top: 220px;
+  font-size: 40px;
+}
+.headerAbout {
+  text-align: center;
+  color: white;
+  margin-top: 75px;
+  font-size: 40px;
+}
+.homeImg {
+  background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('http://imgur.com/M0YnKTQ.jpg');
+  background-size: cover;
+  height: 700px;
+}
+.aboutImg {
+  background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('http://i.imgur.com/c5ZxsXH.jpg');
+  background-size: cover;
+  height: 700px;
+}
+.aboutText {
+  color: white;
+  font-size: 20px;
+  margin-left: 150px;
+  margin-right: 150px;
+}
+.card-media {
+  background: url('http://i.imgur.com/PhTxjXn.jpg?1');
+  background-color: #999999;
+  height: 250px;
+  width: 270px;
+}
+.sideNav {
+  height: 665px;
+  background-color: #3f51bf;
+}
+.profileForm {
+  margin-left: 18px;
+}
+.quickSearch {
+  height: 300px;
+}
+.cardTitle {
+  background-color: #00b0ff;
+  color: white;
+}
+.cardResult {
+  background-color: #0091ea;
+  color: white;
+}
+.bottomSheet {
+  background-color: #0091ea;
+}
+.loginForm {
+  height: 300px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 225px;
+  margin-right: 225px;
+}
+.loginBg {
+  background-color: #999999;
+  height: 640px;
+}
+.signupForm {
+  height: 480px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 250px;
+  margin-right: 250px;
+}
+.signupBg {
+  background-color: #999999;
+  height: 640px;
+}
+.editForm {
+  height: 500px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 400px;
+  margin-right: 400px;
+}
+.editProfileBg {
+  background-color: #999999;
+  height: 640px;
+}
+.profileNavBtn {
+  padding-left: 45px;
+}
+#footer {
+  text-align: center;
+  font-size: 14px;
+  padding-top: 8px;
+}
