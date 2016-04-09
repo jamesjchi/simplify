@@ -19,10 +19,12 @@ router.route('/')
     });
   });
 
-router.get('/:id', function(req, res) {
-  User.findById(req.params.id, function(err, user) {
-    if (err) return res.status(500).send(err);
-    res.send(user);
+router.route('/:id') 
+  .get(function(req, res) {
+    User.findById(req.params.id, function(err, user) {
+      if (err) return res.status(500).send(err);
+      res.send(user);
+    });
   })
   .put(function(req, res) {
     User.findByIdAndUpdate(req.params.id, req.body, function(err) {
@@ -30,6 +32,6 @@ router.get('/:id', function(req, res) {
       res.send({'message': 'success'});
     });
   });
-});
+
 
 module.exports = router;

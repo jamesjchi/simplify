@@ -1,4 +1,4 @@
-var app = angular.module('OptimizerApp', ['ngRoute', 'OptCtrls', 'OptServices', 'ngMaterial']);
+var app = angular.module('SimplifyApp', ['ngRoute', 'OptCtrls', 'OptServices', 'ngMaterial']);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
   

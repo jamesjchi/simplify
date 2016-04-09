@@ -6,10 +6,16 @@ var expressJWT = require('express-jwt');
 var jwt = require('jsonwebtoken');
 var app = express();
 var moment = require('moment');
+var http = require('http');
+var https = require('https');
+var fs = require('fs');
+var privateKey  = fs.readFileSync('key.pem', 'utf8');
+var certificate = fs.readFileSync('cert.pem', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
 var runScheduler = require('./helpers/mailScheduler');
 var mailUsers = require('./helpers/mailUsers');
 var mailSender = require('./helpers/mailSender');
-var weather = require("Openweather-Node");
+var weather = require("openweather-node");
 
 var secret= "mysupersecretpassword";
 
@@ -95,6 +101,8 @@ app.get('/*', function(req, res){
 // });
 
 
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
 
-
-app.listen(process.env.PORT || 3000);
+httpServer.listen(process.env.PORT || 3000);
+httpsServer.listen(process.env.SSLPORT || 4000);

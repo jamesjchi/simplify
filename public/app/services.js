@@ -1,6 +1,6 @@
 angular.module('OptServices', ['ngResource'])
 .factory('Opt', ['$resource', 'Auth', function($resource, Auth) {
-  return $resource('http://localhost:3000/api/users/:id', null, 
+  return $resource('http://localhost:3000/api/users/:id', null,
      {
       get: {
         method: 'GET',

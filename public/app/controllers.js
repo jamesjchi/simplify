@@ -6,27 +6,17 @@ angular.module('OptCtrls', ['OptServices', 'ngMaterial', 'ngMessages'])
     });
   };
 }])
-.controller('ShowCtrl', ['$http', 'Auth', '$scope', '$location', '$routeParams', 'Opt', function($http, Auth, $scope, $location, $routeParams, Opt) {
+.controller('ShowCtrl', ['$http', 'Auth', '$scope', '$location', '$mdToast', '$routeParams', 'Opt', '$route', function($http, Auth, $scope, $location, $mdToast, $routeParams, Opt, $route) {
   $scope.user = Auth.currentUser();
   
   $scope.updateProfile = function(){
-    Opt.query({_id:  $routeParams.id}, function success(run) { 
-      console.log($scope.user._doc.email);
-      console.log($scope.user._doc._id);
-      $http({
-        method: 'PUT',
-        url: '/api/users/' + $routeParams.id,
-        data: { _id: $routeParams.id,
-          name: $scope.user._doc.name, 
-          email: $scope.user._doc.email, 
-          phone: $scope.user._doc.phone, 
-          location: $scope.user._doc.location, 
-          notifications: $scope.user._doc.notifications 
-        }
-      })
-      console.log($scope.user._doc.name);
+    Opt.update({id: $routeParams.id}, $scope.user._doc, function success(update) { 
       $location.path('/profile');
-    })
+      $route.reload();
+      $mdToast.show($mdToast.simple().content('You have updated your profile!'));
+    }, function error(data) {
+      console.log(data);
+    });
   }
 
 }])
@@ -69,13 +59,13 @@ angular.module('OptCtrls', ['OptServices', 'ngMaterial', 'ngMessages'])
   $scope.userSignup = function() {
     $http.post('/api/users', $scope.user).then(function success(res) {
       
-      $http.post('/api/auth', $scope.user).then(function success(res) {
+      // $http.post('/api/auth', $scope.user).then(function success(res) {
         Auth.saveToken(res.data.token);
         $location.path('/profile');
         $mdToast.show($mdToast.simple().content('You have signed up!'));
-      }, function error(res) {
-        console.log(data);
-      });
+      // }, function error(res) {
+      //   console.log(data);
+      // });
     }, function error(res) {
       console.log(data);
       $location.path('/signup');

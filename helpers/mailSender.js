@@ -20,7 +20,7 @@ var mailSender = function (userEmail, userName, userLocation) {
       from: 'postmaster@sandbox294685585e924f97bb9a0a128b63aa48.mailgun.org',
       to: userEmail,
       subject: 'Your Daily Simplify List',
-      html: 'Hi ' + userName + '.<br><br>The current weather in ' + userLocation + ' is 45 degrees and cloudy.<br><br>Your suggested clothing list is:<br>-Jeans<br>-Plaid Shirt<br>-Mountain Hardwear Puffy Jacket.',
+      html: 'Hi ' + userName + '.<br><br>The current weather in ' + userLocation + ' is 47 degrees and partly cloudy.<br><br>Your suggested clothing list is:<br>-Jeans<br>-Plaid Shirt<br>-Mountain Hardwear Puffy Jacket.',
       // only sends test emails if this option is set to true
       // 'o:testmode': true,
     };

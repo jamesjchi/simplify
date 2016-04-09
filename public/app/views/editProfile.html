@@ -31,7 +31,7 @@
           <label>Location</label>
           <input name="location" ng-model="user._doc.location" required="" minlength="10" maxlength="100" ng-model="user._doc.location">
           <div ng-messages="userForm.location.$error" ng-if="!showHints">
-            <div ng-message-exp="['required', 'minlength', 'maxlength']">
+            <div ng-message-exp="['required']">
               Input your current location. (ie. Seattle, WA)
             </div>
           </div>
